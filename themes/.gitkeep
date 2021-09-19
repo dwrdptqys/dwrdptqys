@@ -1,1 +1,1 @@
-git clone https://github.com/dwrdptqys/hexo-theme-flexblock ./themes/themes
+git clone https://github.com/dwrdptqys/hexo-theme-flexblock ./themes/themes && echo 1
