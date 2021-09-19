@@ -1,0 +1,32 @@
+name: Use Actions Deploy Hexo To Github
+
+on:
+  push:
+
+jobs:
+  Instance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+        with:
+          ref: master
+ 
+      - name: Install hexo
+        run: sudo npm install hexo-cli -g
+
+      - name: Generate
+        run: |
+          npm install
+          rm -rf .github
+          rm -rf .gitignore
+          bash themes/.gitkeep
+          hexo generate
+ 
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./public
+          publish_branch: hexo
+          personal_token: ${{ secrets.TOKEN }}
